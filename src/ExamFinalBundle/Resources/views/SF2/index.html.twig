@@ -1,0 +1,110 @@
+{% extends '@ExamFinal/default/layout.html.twig' %}
+
+{% block body %}
+    <div class="container sf2">
+        <div class="row ennonce">
+            <div class="row center-align line_divider">
+                <img src="{{ asset('bundles/examfinal/images/quidditch.png') }}" alt="quidditch">
+                <blockquote cite="https://fr.wikipedia.org/wiki/Quidditch">
+                    "Le quidditch est un sport fictif issu de la saga Harry Potter créé par J. K. Rowling. Chaque équipe possède sept joueurs chevauchant des balais volants. L'objectif étant de marquer plus de points que l'adversaire en marquant un maximum de buts et en attrapant une balle magique, le vif d'or. Un match peut durer des mois et comporte des risques mortels pour les joueurs."
+                </blockquote>
+            </div>
+            <div class="row">
+                <h3>Enoncé</h3>
+                <p>La première étape consciste à bien s'imprégnier des règles du Quidditch, c'est un sport national à ne pas prendre à la légère !!!</p>
+                <p>Lis bien les sites suivants</p>
+                <ul class="collection">
+                    <li class="collection-item">
+                        <a href="http://www.quidditch.fr/">Fédération française de Quidditch</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="http://www.encyclopedie-hp.org/monde-magique/quidditch/regles/">Règles du Quidditch</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="https://fr.wikipedia.org/wiki/Quidditch">Quidditch by Wikipedia</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="instruction left-align row">
+            <ol class="collection">
+                <li>
+                    <strong>Etre en capacité de créer des équipes avec 7 joueurs dans chaque équipe</strong>
+                    <ol>
+                        <li>Créer un bundle QuidditchBundle</li>
+                        <li>
+                            Créer deux entitées:
+                            <ol>
+                                <li>Une pour les équipes chacune identifiés par un nom et des joueurs</li>
+                                <li>
+                                    Une pour les joueurs chacun identifiés par nom, exp, age
+                                    <ol>
+                                        <li>Exp: défini aléatoirement entre 20 et 80</li>
+                                        <li>Age: défini aléatoirement entre 18 et 30</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>Un joueur ne peut pas être présent deux fois dans la même équipe, de même qu’un joueur ne peut pas être dans deux équipes différentes</li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>Faire jouer les deux équipes:</strong>
+                    <ol>
+                        <li>Réaliser un formulaire dans lequel on peut sélectionner deux équipes</li>
+                        <li>
+                            Après validation, sur la vue suivante
+                            <ol>
+                                <li>Renvoyer les stats globaux des deux équipes (exp total, moyenne d’âge)</li>
+                                <li>
+                                    Afficher l’équipe vainqueur selon les critères suivants:
+                                    <ol>
+                                        <li>L’équipe la plus jeune voit son exp augmenter de 10%</li>
+                                        <li>L’équipe qui a la plus d’exp gagne</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>BONUS</strong>
+                    <ol>
+                        <li>
+                            Lorsque l’on crée une équipe, les 7 joueurs sont créé automatiquement
+                            <ol>
+                                <li>Premier bonus: le nom des joueurs sera donné aléatoirement à l’aide d’un uniiqid</li>
+                                <li>Second bonus: le nom des joueurs sera récupéré automatiquement via l’api https://randomuser.me/</li>
+                            </ol>
+                        </li>
+                        <li>A la création d’un joueur, on peut lui associer une photo</li>
+                        <li>On ne peux pas ajouter plus de 7 joueurs par équipe</li>
+                        <li>A chaque match, l’équipe vainqueur se voit attribuer 100pt d’exp, ces 100pt seront redistribué de manière aléatoire à chaque membre de l’équipe.</li>
+                        <li>
+                            Gérer un tournoi
+                            <ol>
+                                <li>8 équipes</li>
+                                <li>Quart de final, demi final, Final</li>
+                                <li>Même critère que ci dessus pour la gain d’exp</li>
+                                <li>Prise en compte de la fatigue, chaque match fait perdre entre 1% et 10% (aléatoire) d’exp à l’équipe</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <div class="row line_divider">
+            <p>Tu es libre d'utiliser le/les frameworks css/js de ton choix, aucune librairie n'est chargée</p>
+            <p>Tu peux également utiliser le fichier base.html.twig si tu en as besoin, tout le reste doit se trouver dans ton bundle</p>
+            <p>L'interface que tu vas créer devra être consultable par via le path "/quidditch"</p>
+            <p>Pour la suite je te laisse faire !</p>
+            <p>Bon courage</p>
+        </div>
+        <div class="row">
+            <div class="col m12 button_homepage">
+                <a href="{{ path('exam_final_homepage') }}" class="waves-effect waves-light btn">Retour à la page d'accueil</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
