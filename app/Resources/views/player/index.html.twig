@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Player list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Playername</th>
+                <th>Playerexperience</th>
+                <th>Playerage</th>
+                <th>Playertiredness</th>
+                <th>Playerrole</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
+                <td>{{ player.playerName }}</td>
+                <td>{{ player.playerExperience }}</td>
+                <td>{{ player.playerAge }}</td>
+                <td>{{ player.playerTiredness }}</td>
+                <td>{{ player.playerRole }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('player_show', { 'id': player.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('player_edit', { 'id': player.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('player_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

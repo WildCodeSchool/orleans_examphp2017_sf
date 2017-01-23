@@ -1,0 +1,19 @@
+.h1 {
+    font-weight: bold;
+    color: aliceblue;
+    padding: 20px;
+    background-color: steelblue;
+
+}
+
+.h2 {
+    font-weight: bold;
+    font-size: medium;
+    color: aliceblue;
+    background-color: steelblue;
+    padding: 10px;
+}
+
+body {
+    background-color: lightgrey;
+}
