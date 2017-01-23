@@ -1,1 +1,32 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block header %}
+        <header class="text-center">
+            <h1>F.F.Quidditch</h1>
+            <h2>Bienvenue sur la plateforme du Quidditch Français!</h2>
+        </header>
+    {%  endblock header %}
+
+    <main class="container-fluid">
+        <div class="row">
+            {% block main %}
+                <div class="col-sm-12 text-center">
+                {{ render(controller('QuidditchBundle:Default:play')) }}
+                </div>
+            {% endblock main %}
+        </div>
+    </main>
+
+    {% block footer %}
+        <footer class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a class="btn btn-default" href="{{ path('accueil') }}">Retour au jeux</a>
+                    <a class="btn btn-primary" href="{{ path('player_index') }}">Ajouter des joueurs</a>
+                    <a class="btn btn-success" href="{{ path('team_index') }}">Gestion des équipes</a>
+                </div>
+            </div>
+        </footer>
+    {% endblock footer %}
+{% endblock body %}

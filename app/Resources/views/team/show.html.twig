@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'QuidditchBundle:Default:index.html.twig' %}
 
-{% block body %}
+{% block main %}
     <h1>Team</h1>
 
-    <table>
+    <table class="table table-responsive table-condensed">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -20,12 +20,12 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled list-inline">
         <li>
-            <a href="{{ path('team_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('team_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('team_edit', { 'id': team.id }) }}">Editer l'équipe</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'QuidditchBundle:Default:index.html.twig' %}
 
-{% block body %}
+{% block main %}
     <h1>Player list</h1>
 
-    <table>
+    <table class="table table-responsive table-condensed">
         <thead>
             <tr>
                 <th>Id</th>
@@ -25,14 +25,14 @@
                 <td>{{ player.age }}</td>
                 <td>{{ player.tiredness }}</td>
                 <td>{{ player.role }}</td>
-                <td>{{ player.avatar }}</td>
+                <td><img src="{{ asset('avatar/'~player.avatar) }}" alt=""></td>
                 <td>
-                    <ul>
+                    <ul class="list-unstyled list-inline">
                         <li>
-                            <a href="{{ path('player_show', { 'id': player.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('player_show', { 'id': player.id }) }}">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('player_edit', { 'id': player.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('player_edit', { 'id': player.id }) }}">Editer</a>
                         </li>
                     </ul>
                 </td>
@@ -41,9 +41,9 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled list-inline">
         <li>
-            <a href="{{ path('player_new') }}">Create a new entry</a>
+            <a class="btn btn-default" href="{{ path('player_new') }}">Créer un joueur</a>
         </li>
     </ul>
 {% endblock %}

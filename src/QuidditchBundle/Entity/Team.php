@@ -35,11 +35,10 @@ class Team
      */
     private $country;
 
-    /*
-     * @ORM\ManyToOne(targetEtity="QuidditchBundle\Entity\Player", inversedBy="team")
+    /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="team", cascade={"persist"})
      */
     private $players;
-
 
     /**
      * Get id
@@ -99,20 +98,46 @@ class Team
         return $this->country;
     }
 
+
     /**
-     * @return mixed
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add player
+     *
+     * @param \QuidditchBundle\Entity\Player $player
+     *
+     * @return Team
+     */
+    public function addPlayer(\QuidditchBundle\Entity\Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \QuidditchBundle\Entity\Player $player
+     */
+    public function removePlayer(\QuidditchBundle\Entity\Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPlayers()
     {
         return $this->players;
     }
-
-    /**
-     * @param mixed $players
-     */
-    public function setPlayers($players)
-    {
-        $this->players = $players;
-    }
-
 }

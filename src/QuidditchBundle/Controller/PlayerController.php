@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use QuidditchBundle\Entity\Player;
 use QuidditchBundle\Form\PlayerType;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Player controller.
@@ -42,10 +43,25 @@ class PlayerController extends Controller
     public function newAction(Request $request)
     {
         $player = new Player();
+        $player->setXp(rand(20,80));
+        $player->setAge(rand(18,30));
+        $player->setTiredness(rand(0,20));
+
+        $randUser = json_decode(file_get_contents('https://randomuser.me/api/'),true);
+        $player->setName($randUser['results'][0]['name']['first']);
+
         $form = $this->createForm('QuidditchBundle\Form\PlayerType', $player);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $player->getAvatar();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $player->setAvatar($fileName);
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
@@ -85,9 +101,25 @@ class PlayerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($player);
         $editForm = $this->createForm('QuidditchBundle\Form\PlayerType', $player);
+
+        $editForm->remove('avatar');
+//        $editForm['avatar']->setData($player->getAvatar());
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $file = $player->getAvatar();
+//            if (!is_null($file)  and !empty($file)) {
+//                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+//                $player->setAvatar($fileName);
+//                $file->move(
+//                    $this->getParameter('upload_directory'),
+//                    $fileName
+//                );
+//            }elseif (isset($avatar)) {
+//                $player->setAvatar(basename($avatar));
+//            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();

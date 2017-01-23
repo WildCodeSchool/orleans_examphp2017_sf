@@ -64,7 +64,7 @@ class Player
     private $avatar;
 
     /**
-     * @ORM\OneToMany(targetEntity="QuidditchBundle\Entity\Team", mappedBy="players")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="players", cascade={"persist"})
      */
     private $team;
 
@@ -224,51 +224,26 @@ class Player
     }
 
     /**
-     * @return mixed
-     */
-    public function getTeam()
-    {
-        return $this->team;
-    }
-
-    /**
-     * @param mixed $team
-     */
-    public function setTeam($team)
-    {
-        $this->team = $team;
-    }
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add team
+     * Set team
      *
      * @param \QuidditchBundle\Entity\Team $team
      *
      * @return Player
      */
-    public function addTeam(\QuidditchBundle\Entity\Team $team)
+    public function setTeam(\QuidditchBundle\Entity\Team $team = null)
     {
-        $this->team[] = $team;
+        $this->team = $team;
 
         return $this;
     }
 
     /**
-     * Remove team
+     * Get team
      *
-     * @param \QuidditchBundle\Entity\Team $team
+     * @return \QuidditchBundle\Entity\Team
      */
-    public function removeTeam(\QuidditchBundle\Entity\Team $team)
+    public function getTeam()
     {
-        $this->team->removeElement($team);
+        return $this->team;
     }
 }

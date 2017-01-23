@@ -43,14 +43,19 @@ class TeamController extends Controller
     {
         $team = new Team();
         $form = $this->createForm('QuidditchBundle\Form\TeamType', $team);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach ($form['players']->getData() as $player) {
+                $player->setTeam($team);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_show', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render('team/new.html.twig', array(
@@ -88,11 +93,16 @@ class TeamController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            foreach ($editForm['players']->getData() as $player) {
+                $player->setTeam($team);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render('team/edit.html.twig', array(

@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'QuidditchBundle:Default:index.html.twig' %}
 
-{% block body %}
+{% block main %}
     <h1>Player</h1>
 
-    <table>
+    <table class="table table-responsive table-condensed">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -31,17 +31,17 @@
             </tr>
             <tr>
                 <th>Avatar</th>
-                <td>{{ player.avatar }}</td>
+                <td><img src="{{ asset('avatar/'~player.avatar) }}" alt=""></td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled list-inline">
         <li>
-            <a href="{{ path('player_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('player_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('player_edit', { 'id': player.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('player_edit', { 'id': player.id }) }}">Editer le joueur</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

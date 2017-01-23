@@ -1,10 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'QuidditchBundle:Default:index.html.twig' %}
 
-{% block body %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block main %}
     <h1>Team creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.country) }}
+
+        {{ form_label(form.players) }}<a href="#" id="add-another-player"> Add a player</a>
+        <ul id="player-fields-list" class="list-unstyled" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
+            {% for player in form.players %}
+                <li>
+                    {{ form_errors(player) }}
+                    {{ form_row(player) }}
+                </li>
+            {% endfor %}
+        </ul>
+
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
@@ -13,4 +27,32 @@
             <a href="{{ path('team_index') }}">Back to the list</a>
         </li>
     </ul>
+    <script>
+        $(function () {
+            // keep track of how many email fields have been rendered
+            var playerCount = '{{ form.players|length }}';
+
+            $('#add-another-player').click(function(e) {
+                e.preventDefault();
+                console.log(playerCount);
+                if(playerCount<7) {
+                    var playerList = jQuery('#player-fields-list');
+
+                    // grab the prototype template
+                    var newWidget = playerList.attr('data-prototype');
+                    // replace the "__name__" used in the id and name of the prototype
+                    // with a number that's unique to your emails
+                    // end name attribute looks like name="contact[emails][2]"
+                    newWidget = newWidget.replace(/__name__/g, playerCount);
+                    playerCount++;
+
+                    // create a new list element and add it to the list
+                    var newLi = jQuery('<li></li>').html(newWidget);
+                    newLi.appendTo(playerList);
+                }else{
+                    alert("! number of player exeed 7 !");
+                }
+            });
+        })
+    </script>
 {% endblock %}
