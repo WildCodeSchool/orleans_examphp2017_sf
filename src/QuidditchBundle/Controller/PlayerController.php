@@ -46,6 +46,9 @@ class PlayerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $player->setAge(rand(18,30));
+            $player->setFatigue(rand(0,20));
+            $player->setExp(rand(20,80));
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();

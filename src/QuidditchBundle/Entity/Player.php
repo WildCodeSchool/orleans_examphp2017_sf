@@ -56,6 +56,14 @@ class Player
      */
     private $role;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="players")
+     */
+
+    private $team;
+
+
+
 
     /**
      * Get id
@@ -185,5 +193,29 @@ class Player
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \QuidditchBundle\Entity\Team $team
+     *
+     * @return Player
+     */
+    public function setTeam(\QuidditchBundle\Entity\Team $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \QuidditchBundle\Entity\Team
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

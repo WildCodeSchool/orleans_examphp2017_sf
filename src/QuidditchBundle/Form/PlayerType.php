@@ -16,9 +16,6 @@ class PlayerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('exp')
-            ->add('age')
-            ->add('fatigue')
             ->add('role')
         ;
     }

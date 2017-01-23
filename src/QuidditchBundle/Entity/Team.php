@@ -35,6 +35,12 @@ class Team
      */
     private $country;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="team")
+     */
+
+    private $players;
+
 
     /**
      * Get id
@@ -92,5 +98,46 @@ class Team
     public function getCountry()
     {
         return $this->country;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add player
+     *
+     * @param \QuidditchBundle\Entity\Player $player
+     *
+     * @return Team
+     */
+    public function addPlayer(\QuidditchBundle\Entity\Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \QuidditchBundle\Entity\Player $player
+     */
+    public function removePlayer(\QuidditchBundle\Entity\Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }
