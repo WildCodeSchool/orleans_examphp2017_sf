@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Resultat du match</h1>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                {% for equipe in equipes %}
+                    {{ equipe.nom }}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

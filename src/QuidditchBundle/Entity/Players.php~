@@ -1,0 +1,128 @@
+<?php
+
+namespace QuidditchBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Players
+ *
+ * @ORM\Table(name="players")
+ * @ORM\Entity(repositoryClass="QuidditchBundle\Repository\PlayersRepository")
+ */
+class Players
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="exp", type="integer")
+     */
+    private $exp;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="age", type="integer")
+     */
+    private $age;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Players
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set exp
+     *
+     * @param string $exp
+     *
+     * @return Players
+     */
+    public function setExp($exp)
+    {
+        $this->exp = $exp;
+
+        return $this;
+    }
+
+    /**
+     * Get exp
+     *
+     * @return string
+     */
+    public function getExp()
+    {
+        return $this->exp;
+    }
+
+    /**
+     * Set age
+     *
+     * @param integer $age
+     *
+     * @return Players
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+}
+

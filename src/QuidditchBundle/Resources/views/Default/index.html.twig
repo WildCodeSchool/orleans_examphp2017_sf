@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="text-center">Bienvenue au Tournoi de Quidditch</h1>
+            </div>
+        </div>
+        <div class="well">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2 class="text-center"><a href="{{ path('joueur_new') }}">Créer un nouveau joueur</a></h2>
+                </div>
+                <div class="col-xs-6">
+                    <h2 class="text-center"><a href="{{ path('equipe_new') }}">Créer une nouvelle équipe</a></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="text-center"><a href="{{ path('match') }}">Jouer un match</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
