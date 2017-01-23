@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body %}
+<h1>Choose your team and fight, now !</h1>
+
+{{ form_start(form) }}
+{{ form_row(form.name) }}
+{{ form_row(form.name) }}
+
+{{ form_end(form) }}
+
+{% endblock %}
+git status
