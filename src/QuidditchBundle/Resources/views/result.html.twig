@@ -24,14 +24,30 @@
     </tr>
     <tr>
         <td>Finale note : {% if avgAge1<avgAge2 %}
-                {{ (exp1/7)*(avgFtg1/100)+(exp1/7)*(avgFtg1/100)*0.1 }}
+                {% set finale1 = (exp1/7)*(avgFtg1/100)+(exp1/7)*(avgFtg1/100)*0.1 %}
+                {{ finale1 }}
             {% else %}
-                {{ (exp1/7)*(avgFtg1/100) }}
+                {% set finale1 = (exp1/7)*(avgFtg1/100) %}
+                {{ finale1 }}
             {% endif %}</td>
         <td>Finale note : {% if avgAge2<avgAge1 %}
-                {{ (exp2/7)*(avgFtg2/100)+(exp2/7)*(avgFtg2/100)*0.1 }}
+                {% set finale2 =  (exp2/7)*(avgFtg2/100)+(exp2/7)*(avgFtg2/100)*0.1 %}
+                {{ finale2 }}
             {% else %}
-                {{ (exp2/7)*(avgFtg2/100) }}
+                {% set finale2 = (exp2/7)*(avgFtg2/100) %}
+                {{ finale2 }}
+            {% endif %}</td>
+    </tr>
+    <tr>
+        <td>{% if finale1>finale2 %}
+                Winner !
+                {% else %}
+                Loser !
+            {% endif %}</td>
+        <td>{% if finale2>finale1 %}
+                Winner !
+            {% else %}
+                Loser !
             {% endif %}</td>
     </tr>
     </tbody>
