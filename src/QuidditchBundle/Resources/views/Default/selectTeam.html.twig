@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Create"/>
+    {{ form_end(form) }}
+
+    {% if equipe1 == null and equipe2 == null %}
+
+    {% else %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    {% set exp = 0 %}
+                    {% set age = 0 %}
+                    {#{% set i = 0 %}#}
+
+                    {{ equipe1.nom }}
+                    <ul></ul>
+                    {% for joueur in  equipe1.joueurs%}
+                        {#{% set i = i++ %}#}
+                        {% set exp = exp + joueur.exp %}
+                        {% set age = age + joueur.age %}
+                    {% endfor %}
+                    <li>{{ exp }}</li>
+                    {#<li>{{ age / i }}</li>#}
+                    </ul>
+                </div>
+                <div class="col-xs-6">
+                    {% set exp = 0 %}
+                    {% set age = 0 %}
+                    {#{% set i = 0 %}#}
+
+                    {{ equipe2.nom }}
+                    <ul></ul>
+                    {% for joueur in  equipe2.joueurs%}
+                        {#{% set i = i++ %}#}
+                        {% set exp = exp + joueur.exp %}
+                        {% set age = age + joueur.age %}
+                    {% endfor %}
+                    <li>{{ exp }}</li>
+                    {#<li>{{ age / i }}</li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

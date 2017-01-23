@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Joueur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ joueur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ joueur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ joueur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Exp</th>
+                <td>{{ joueur.exp }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ joueur.age }}</td>
+            </tr>
+            <tr>
+                <th>Fatigue</th>
+                <td>{{ joueur.fatigue }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ joueur.role }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ joueur.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('joueur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('joueur_edit', { 'id': joueur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
