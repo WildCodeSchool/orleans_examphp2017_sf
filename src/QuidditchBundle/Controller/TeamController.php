@@ -47,7 +47,7 @@ class TeamController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $players = ($form->get('players')->getData());
-            if (count($players)>7) {
+            if (count($players)!=7) {
                 return $this->render('QuidditchBundle::errorNumber.html.twig');
             }
             $teamCompo = [];
