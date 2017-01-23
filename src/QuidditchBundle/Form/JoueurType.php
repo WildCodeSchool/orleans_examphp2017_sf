@@ -22,7 +22,10 @@ class JoueurType extends AbstractType
             ->add('nom')
             ->add('exp')
             ->add('age')
-//	        ->add('role', ChoiceType::class, array('choices' => array('gardien'=>'gardien', 'attrapeur'=>'attrapeur', 'batteur'=>'batteur', 'poursuiveur'=>'poursuiveur'),
+//	        ->add('role', ChoiceType::class, array('choices' => array('gardien'=>'gardien',
+//		        'attrapeur'=>'attrapeur',
+//		        'batteur'=>'batteur',
+//		        'poursuiveur'=>'poursuiveur'),
 //		        'choices_as_values'=>true))
 //	        ->add('equipe', EntityType::class, [
 //		        'class'=>'QuidditchBundle\Entity\Equipe',
