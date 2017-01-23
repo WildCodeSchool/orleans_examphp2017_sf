@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="text-center">Match de Quidditch en Cours</h1>
+        <div class="row">
+            <div class="col-lg-5">
+                <h2>{{ equipes.0.nom }}</h2>
+                <table class="table-responsive table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nom du joueur</th>
+                        <th>Rôle</th>
+                        <th>Expérience</th>
+                        <th>Age</th>
+                        <th>Fatigue</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set experience = 0 %}
+                    {% set fatigue = 0 %}
+                    {% for joueur in equipes.0.joueurs %}
+                        <tr>
+                            <td>{{ joueur.nom }}</td>
+                            <td>{{ joueur.role }}</td>
+                            <td>{{ joueur.experience }}</td>
+                            <td>{{ joueur.age }}</td>
+                            <td>{{ joueur.fatigue }}</td>
+                            {% set experience = experience + joueur.experience %}
+                            {% set fatigue = fatigue + joueur.fatigue %}
+                        </tr>
+                    {% endfor %}
+                    {% set moyenne_exp = (experience/7) %}
+                    {% set moyenne_fat = (fatigue/7) %}
+                    {% set score = moyenne_exp * (moyenne_fat/100) %}
+                    </tbody>
+                </table>
+                <div>
+                    <p>Note de L'Equipe{{ score }}</p>
+                </div>
+            </div>
+
+
+            <div class="col-lg-5">
+                <h2>{{ equipes.1.nom }}</h2>
+                <table class="table-responsive table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nom du joueur</th>
+                        <th>Rôle</th>
+                        <th>Expérience</th>
+                        <th>Age</th>
+                        <th>Fatigue</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set experience = 0 %}
+                    {% set fatigue = 0 %}
+                    {% for joueur in equipes.1.joueurs %}
+                        <tr>
+                            <td>{{ joueur.nom }}</td>
+                            <td>{{ joueur.role }}</td>
+                            <td>{{ joueur.experience }}</td>
+                            <td>{{ joueur.age }}</td>
+                            <td>{{ joueur.fatigue }}</td>
+                            {% set experience = experience + joueur.experience %}
+                            {% set fatigue = fatigue + joueur.fatigue %}
+                        </tr>
+                    {% endfor %}
+                    {% set moyenne_exp = (experience/7) %}
+                    {% set moyenne_fat = (fatigue/7) %}
+                    {% set score = moyenne_exp * (moyenne_fat/100) %}
+                    </tbody>
+                </table>
+                <div>
+                    <p>Note de l'Equipe{{ score }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

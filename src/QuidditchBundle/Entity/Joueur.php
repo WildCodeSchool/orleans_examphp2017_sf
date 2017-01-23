@@ -23,15 +23,19 @@ class Joueur
 
     /**
      * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
+    
     /**
      * @var string
-     *
-     * @ORM\Column(name="experience", type="string", length=255)
+     * @ORM\Column(name="role", type="string", length=255)
+     */
+    private $role;
+
+    /**
+     * @var int
+     * @ORM\Column(name="experience", type="integer")
      */
     private $experience;
 
@@ -41,11 +45,69 @@ class Joueur
      * @ORM\Column(name="age", type="integer")
      */
     private $age;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="fatigue", type="integer")
+     */
+    private $fatigue;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Equipe", inversedBy="joueurs")
+     */
+    private $equipe;
+
+    /**
+     * @return mixed
+     */
+    public function getEquipe()
+    {
+        return $this->equipe;
+    }
+
+    /**
+     * @param mixed $equipe
+     */
+    public function setEquipe($equipe)
+    {
+        $this->equipe = $equipe;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    /**
+     * @return int
+     */
+    public function getFatigue()
+    {
+        return $this->fatigue;
+    }
+
+    /**
+     * @param int $fatigue
+     */
+    public function setFatigue($fatigue)
+    {
+        $this->fatigue = $fatigue;
+    }
 
 
     /**
      * Get id
-     *
      * @return int
      */
     public function getId()
@@ -80,7 +142,7 @@ class Joueur
     /**
      * Set experience
      *
-     * @param string $experience
+     * @param integer $experience
      *
      * @return Joueur
      */
@@ -94,7 +156,7 @@ class Joueur
     /**
      * Get experience
      *
-     * @return string
+     * @return int
      */
     public function getExperience()
     {
@@ -125,4 +187,3 @@ class Joueur
         return $this->age;
     }
 }
-

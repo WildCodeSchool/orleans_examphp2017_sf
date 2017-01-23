@@ -12,7 +12,7 @@ use QuidditchBundle\Form\EquipeType;
 /**
  * Equipe controller.
  *
- * @Route("/equipe")
+ * @Route("/quidditch/equipe")
  */
 class EquipeController extends Controller
 {
@@ -56,6 +56,44 @@ class EquipeController extends Controller
         return $this->render('equipe/new.html.twig', array(
             'equipe' => $equipe,
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/game/new", name="game_new")
+     * @Method({"GET", "POST"})
+     */
+    public function gameAction(Request $request)
+    {
+
+        $form = $this->createForm('QuidditchBundle\Form\GameType');
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $equipes = $form->getData();
+            $equipe1 = $equipes['Equipe1']->getId();
+            $equipe2 = $equipes['Equipe2']->getId();
+
+            return $this->redirectToRoute('game_show', array('equipe1' => $equipe1, 'equipe2' => $equipe2 ));
+        }
+
+        return $this->render('equipe/new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/game/show/{equipe1}/{equipe2}", name="game_show")
+     * @Method("GET")
+     */
+    public function gameShowAction($equipe1, $equipe2)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $equipes = $em->getRepository('QuidditchBundle:Equipe')->findMatch($equipe1,$equipe2);
+
+        return $this->render('game/match.html.twig', array(
+            'equipes' => $equipes,
         ));
     }
 

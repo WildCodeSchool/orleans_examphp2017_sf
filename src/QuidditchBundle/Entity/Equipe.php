@@ -35,6 +35,28 @@ class Equipe
      */
     private $pays;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Joueur", mappedBy="equipe")
+     */
+    private $joueurs;
+
+    /**
+     * @return mixed
+     */
+    public function getJoueurs()
+    {
+        return $this->joueurs;
+    }
+
+    /**
+     * @param mixed $joueurs
+     */
+    public function setJoueurs($joueurs)
+    {
+        $this->joueurs = $joueurs;
+    }
+
 
     /**
      * Get id
@@ -93,5 +115,35 @@ class Equipe
     {
         return $this->pays;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->joueurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add joueur
+     *
+     * @param \QuidditchBundle\Entity\Joueur $joueur
+     *
+     * @return Equipe
+     */
+    public function addJoueur(\QuidditchBundle\Entity\Joueur $joueur)
+    {
+        $this->joueurs[] = $joueur;
+
+        return $this;
+    }
+
+    /**
+     * Remove joueur
+     *
+     * @param \QuidditchBundle\Entity\Joueur $joueur
+     */
+    public function removeJoueur(\QuidditchBundle\Entity\Joueur $joueur)
+    {
+        $this->joueurs->removeElement($joueur);
+    }
+}

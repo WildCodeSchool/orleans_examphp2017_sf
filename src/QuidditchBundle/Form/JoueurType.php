@@ -2,7 +2,9 @@
 
 namespace QuidditchBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,9 +18,21 @@ class JoueurType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('experience')
-            ->add('age')
+            ->add('role', ChoiceType::class, array(
+                'choices'  => array(
+                    'gardien' => 'Gardien',
+                    'attrapeur' => 'attrapeur',
+                    'batteur' => 'batteur',
+                    'poursuiveur' => 'poursuiveur',
+                ),
+            ))
+            ->add('equipe', EntityType::class, array(
+                'class' => 'QuidditchBundle\Entity\Equipe',
+                'choice_label' => 'nom'
+            ))
         ;
+
+
     }
     
     /**

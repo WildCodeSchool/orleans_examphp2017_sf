@@ -12,7 +12,7 @@ use QuidditchBundle\Form\JoueurType;
 /**
  * Joueur controller.
  *
- * @Route("/joueur")
+ * @Route("/quidditch/joueur")
  */
 class JoueurController extends Controller
 {
@@ -42,10 +42,15 @@ class JoueurController extends Controller
     public function newAction(Request $request)
     {
         $joueur = new Joueur();
+        $em = $this->getDoctrine()->getManager();
+        $equipe = $em->getRepository('QuidditchBundle:Equipe')->findAll();
         $form = $this->createForm('QuidditchBundle\Form\JoueurType', $joueur);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() ) {
+            $joueur->setAge(rand(18,30));
+            $joueur->setExperience(rand(20,80));
+            $joueur->setFatigue(rand(0,20));
             $em = $this->getDoctrine()->getManager();
             $em->persist($joueur);
             $em->flush();

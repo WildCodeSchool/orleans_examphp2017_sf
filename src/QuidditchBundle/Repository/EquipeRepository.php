@@ -10,4 +10,24 @@ namespace QuidditchBundle\Repository;
  */
 class EquipeRepository extends \Doctrine\ORM\EntityRepository
 {
+//    public function findMatch($equipe1,$equipe2) {
+//        return $this->createQueryBuilder('e')
+//            ->where('e.id = :equipe1')
+//            ->orWhere('e.id = :equipe2')
+//                ->setParameter('equipe2', $equipe2)
+//                ->setParameter('equipe1', $equipe1)
+//            ->join('e.joueurs','j')
+//            ->getQuery()->getResult();
+//    }
+
+    public function findMatch($equipe1,$equipe2) {
+        return $this->createQueryBuilder('e')
+            ->join('e.joueurs', 'joueurs')
+            ->where('joueurs.equipe = :equipe1')
+            ->orWhere('joueurs.equipe = :equipe2')
+                ->setParameter('equipe2', $equipe2)
+                ->setParameter('equipe1', $equipe1)
+            ->join('e.joueurs','j')
+            ->getQuery()->getResult();
+    }
 }

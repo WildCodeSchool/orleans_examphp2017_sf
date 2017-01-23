@@ -14,12 +14,25 @@
                 <td>{{ joueur.nom }}</td>
             </tr>
             <tr>
+                <th>Nom</th>
+                <td>{{ joueur.role }}</td>
+            </tr>
+            <tr>
                 <th>Experience</th>
                 <td>{{ joueur.experience }}</td>
             </tr>
             <tr>
                 <th>Age</th>
                 <td>{{ joueur.age }}</td>
+            </tr>
+            <tr>
+                <th>Fatigue</th>
+                <td>{{ joueur.fatigue }}</td>
+            </tr>
+            <tr>
+                <th>Equipe</th>
+                <td>{{ joueur.equipe.nom }} / </td>
+                <td>{{ joueur.equipe.pays }}</td>
             </tr>
         </tbody>
     </table>
