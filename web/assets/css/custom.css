@@ -1,0 +1,9 @@
+body{
+    background-image: url("images/QuidditchWorldCup.png");
+    background-attachment: fixed;
+}
+h1{
+    color: #1b6d85;
+    text-align: center;
+    font-size: 50px;
+}
