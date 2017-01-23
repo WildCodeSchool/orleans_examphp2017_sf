@@ -47,6 +47,19 @@ class TeamController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $players = ($form->get('players')->getData());
+            if (count($players)>7) {
+                return $this->render('QuidditchBundle::errorNumber.html.twig');
+            }
+            $teamCompo = [];
+            foreach ($players as $player) {
+                $teamCompo [] = $player->getRole();
+            }
+            $teamCompo = array_count_values($teamCompo);
+            if ($teamCompo['gardien']>1 OR $teamCompo['attrapeur']>1 OR $teamCompo['batteur']>2 OR $teamCompo['poursuiveur'>3]) {
+                return $this->render('QuidditchBundle::errorCompo.html.twig');
+
+            }
+            var_dump($teamCompo);die;
             foreach ($players as $player) {
                 if ($player->getTeam()===null) {
                     $team->addPlayer($player);

@@ -26,7 +26,11 @@ class TeamType extends AbstractType
                     return $er->createQueryBuilder('u')
                         ->where('u.team is null');
                 },
-                'choice_label' => 'name',
+                'choice_label' => function ($player) {
+                    return $player->getName().' '.$player->getRole();
+                },
+
+                'label' => 'Choose team members',
                 'multiple'=>true,
                 'expanded'=>true
 
