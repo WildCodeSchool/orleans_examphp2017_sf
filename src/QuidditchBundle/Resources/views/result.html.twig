@@ -1,4 +1,8 @@
-{{ dump(teams) }}
+{#{{ dump(teams) }}#}
 {#{% for team in teams %}#}
     {#{{ team.name }}#}
 {#{% endfor %}#}
+
+{% for key, team in teams %}
+    {{ dump(team) }}
+{% endfor %}
