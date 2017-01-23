@@ -33,7 +33,7 @@ class GameType extends AbstractType
             ->add('team2', EntityType::class, array('class'=> 'QuidditchBundle:Team',
                 'choice_label' => 'name',
 
-                'label' => 'Choose First Team',
+                'label' => 'Choose Second Team',
                 'multiple'=>false,
                 'expanded'=>false
             ))
