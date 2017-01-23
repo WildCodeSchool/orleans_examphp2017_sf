@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {#<div class="row">#}
+        {#<input class=" waves-effect waves-light btn" type="submit" value="Search"/>#}
+    {#</div>#}
+    {{ form_end(form) }}
+
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th data-field="name">Nom de l'équipe</th>
+                        <th data-field="price">Total expérience</th>
+                        <th data-field="price">Moyenne d'âge</th>
+                        <th data-field="price">Fatigue moyenne</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{ dump(equipes) }}
+                {{ dump(joueurs) }}
+                {% for equipe in equipes %}
+                    <tr>
+                        <td>{{ equipe.nom }}</td>
+                        {#<td>{{ equipe. }}</td>#}
+                        {#<td>{{ equipe.}}</td>#}
+                        {#<td>{{ equipe. }}</td>#}
+                    </tr>
+                {% else %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

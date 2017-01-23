@@ -1,0 +1,24 @@
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th data-field="name">Nom de l'équipe</th>
+            <th data-field="price">Total expérience</th>
+            <th data-field="price">Moyenne d'âge</th>
+            <th data-field="price">Fatigue moyenne</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.roomNumber }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>{{ room.hotel.name }}</td>
+                <td>{{ room.hotel.city }}</td>
+            </tr>
+        {% else %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
