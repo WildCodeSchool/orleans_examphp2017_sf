@@ -14,7 +14,7 @@ class JoueurRepository extends \Doctrine\ORM\EntityRepository
     {
         $qb = $this->createQueryBuilder('j');
         {
-            $qb->Where(array_sum(['j.experience']) / count(['j']));
+            $qb->Where(array_sum(['j.experience']) / 7);
 
         }
     }

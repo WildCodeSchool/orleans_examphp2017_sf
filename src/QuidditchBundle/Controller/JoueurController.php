@@ -47,7 +47,13 @@ class JoueurController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
+            $photo = $joueur->getPhoto();
+            $photoName = md5(uniqid()).'.'.$photo->guessExtension();
+            $photo->move(
+                $this->getParameter('upload_directory'),
+                $photoName
+            );
+            $joueur->setPhoto($photoName);
             $em->persist($joueur);
             $em->flush();
 

@@ -68,6 +68,29 @@ class Joueur
     }
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255)
+     */
+    private $photo;
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+    /**
      *
      * @ORM\ManyToOne(targetEntity="Equipe", inversedBy="joueurs", cascade={"persist"})
      */
