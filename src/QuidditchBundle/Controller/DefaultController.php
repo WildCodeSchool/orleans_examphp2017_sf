@@ -21,11 +21,17 @@ class DefaultController extends Controller
         $joueurs = $em->getRepository('QuidditchBundle\Entity\Joueur')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
             $em = $this->getDoctrine()->getManager();
-           $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByExperiencetotale();
-           //$joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByEquipe('equipe');
-          // $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByExperience('experience');
-           //$joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByFatigue('fatigue');
+          $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByExperienceTotaleAction($data);
+           $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByFatigueMoyenneAction($data);
+           $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByAgeMoyenAction($data);
+
+          //$joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByEquipe('equipe');
+
+
+           //$joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByExperience('experience');
+          // $joueurs =$em->getRepository('QuidditchBundle\Entity\Joueur')->findByFatigue('fatigue');
 
             //$data = $form->getData();
             //$equipes = $em->getRepository('QuidditchBundle\Entity\Equipe')->findBySuperficie($data['superficie']);

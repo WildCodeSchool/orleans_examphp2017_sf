@@ -1,6 +1,8 @@
 <?php
 
 namespace QuidditchBundle\Repository;
+use QuidditchBundle\Entity\Equipe;
+use QuidditchBundle\Entity\Joueur;
 
 /**
  * EquipeRepository
@@ -10,8 +12,6 @@ namespace QuidditchBundle\Repository;
  */
 class EquipeRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function ExperienceTotaleAction()
-    {
-        
-    }
+
 }
+

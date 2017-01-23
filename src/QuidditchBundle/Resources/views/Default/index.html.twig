@@ -1,4 +1,9 @@
-<h1>Que le match commence ! </h1>
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+
+<h1 class="text-center">Que le match commence ! </h1>
 
 {{ form_start(form) }}
 {{ form_widget(form) }}
@@ -10,7 +15,7 @@
 <table class="table table-hover table-condensed">
     <thead>
     <tr>
-        <th>Nom de l'equipe</th>
+        <th>Nom de l'equipe </th>
         <th>Experience moyenne</th>
         <th>age moyen</th>
         <th>Fatigue moyenne</th>
@@ -22,6 +27,9 @@
         {% for equipe in equipes %}
         <tr>
             <td>{{ equipe.nom }}</td>
+
+
+
         </tr>
         {% endfor %}
 
@@ -38,3 +46,5 @@
     </tbody>
     <tfoot></tfoot>
 </table>
+
+{% endblock %}
