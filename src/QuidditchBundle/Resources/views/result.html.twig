@@ -1,0 +1,38 @@
+<table>
+    <thead>
+    <tr>
+        <th>Team 1</th>
+        <th>Team 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Total exp : {{ exp1 }}</td>
+        <td>Total exp : {{ exp2 }}</td>
+    </tr>
+    <tr>
+        <td>Fatigue : {{ avgFtg1 }}</td>
+        <td>Fatigue : {{ avgFtg2 }}</td>
+    </tr>
+    <tr>
+        <td>Age : {{ avgAge1 }}</td>
+        <td>Age : {{ avgAge2 }}</td>
+    </tr>
+    <tr>
+        <td>Note : {{ (exp1/7)*(avgFtg1/100) }}</td>
+        <td>Note : {{ (exp2/7)*(avgFtg2/100) }}</td>
+    </tr>
+    <tr>
+        <td>Finale note : {% if avgAge1<avgAge2 %}
+                {{ (exp1/7)*(avgFtg1/100)+(exp1/7)*(avgFtg1/100)*0.1 }}
+            {% else %}
+                {{ (exp1/7)*(avgFtg1/100) }}
+            {% endif %}</td>
+        <td>Finale note : {% if avgAge2<avgAge1 %}
+                {{ (exp2/7)*(avgFtg2/100)+(exp2/7)*(avgFtg2/100)*0.1 }}
+            {% else %}
+                {{ (exp2/7)*(avgFtg2/100) }}
+            {% endif %}</td>
+    </tr>
+    </tbody>
+</table>

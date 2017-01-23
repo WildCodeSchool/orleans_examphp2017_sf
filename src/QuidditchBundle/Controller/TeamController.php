@@ -55,11 +55,10 @@ class TeamController extends Controller
                 $teamCompo [] = $player->getRole();
             }
             $teamCompo = array_count_values($teamCompo);
-            if ($teamCompo['gardien']>1 OR $teamCompo['attrapeur']>1 OR $teamCompo['batteur']>2 OR $teamCompo['poursuiveur'>3]) {
+            if ($teamCompo['gardien']>1 OR $teamCompo['attrapeur']>1 OR $teamCompo['batteur']>2 OR $teamCompo['poursuiveur']>3) {
                 return $this->render('QuidditchBundle::errorCompo.html.twig');
 
             }
-            var_dump($teamCompo);die;
             foreach ($players as $player) {
                 if ($player->getTeam()===null) {
                     $team->addPlayer($player);

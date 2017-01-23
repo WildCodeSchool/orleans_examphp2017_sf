@@ -2,4 +2,9 @@
 
 <h3>To create players, it's this  <a href="{{ path('player_new') }}">way</a></h3>
 <h3>To create teams, it's this<a href="{{ path('team_new') }}">way</a></h3>
-<h3>To play a match, it's this<a href="{{ path('match_new') }}">way</a></h3>
+<h2>Choose two teams to play a game</h2>
+{{ form_start(form, {'attr':{'action': path('home')}}) }}
+{{ form_errors(form) }}
+{{ form_widget(form) }}
+<input type="submit" value="Play a game"/>
+{{ form_end(form) }}

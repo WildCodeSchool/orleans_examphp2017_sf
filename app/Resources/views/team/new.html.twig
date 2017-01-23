@@ -4,6 +4,8 @@
     <h1>Team creation</h1>
 
     {{ form_start(form) }}
+    <p>A team is made of : 1 gardien, 1 attrapeur, 2 batteurs and 3 poursuiveurs</p>
+    <p>Max 7 players per team</p>
     {{ form_widget(form) }}
     {{ form_row(form.players) }}
     <input type="submit" value="Create"/>
