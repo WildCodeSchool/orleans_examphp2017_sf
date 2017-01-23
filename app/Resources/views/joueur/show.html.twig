@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% form_theme form_show 'bootstrap_3_layout.html.twig' %}
 
 {% block body %}
     <h1>Joueur</h1>
@@ -33,6 +32,10 @@
             <tr>
                 <th>Photo du joueur</th>
                 <td><img src="{{ asset('upload/'~joueur.image|e)}}"></td>
+            </tr>
+            <tr>
+                <th>Equipe du joueur</th>
+                <td>{{ joueur.equipe.id }}</td>
             </tr>
         </tbody>
     </table>

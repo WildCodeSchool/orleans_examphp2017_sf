@@ -69,15 +69,6 @@ class Joueur
      */
     private $image;
 
-//    /**
-//     * Constructor
-//     */
-//    public function __construct()
-//    {
-//        $this->experience = new rand(20,80);
-//    }
-
-
     /**
      * Get id
      *

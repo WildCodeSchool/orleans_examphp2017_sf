@@ -20,10 +20,6 @@ class RechercheType extends AbstractType
                 'class' => 'QuidditchBundle\Entity\Joueur',
                 'choice_label' => 'equipe',
             ])
-//            ->add ('equipe', EntityType::class, [
-//                'class' => 'QuidditchBundle\Entity\Equipe',
-//            'choice_label' => 'nom',
-//            ])
         ;
     }
 

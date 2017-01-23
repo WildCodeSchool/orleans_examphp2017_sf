@@ -46,10 +46,10 @@ class JoueurType extends AbstractType
                     'Poursuiveur' => 'Poursuiveur',
                 ]
             ])
-//            ->add('equipe', EntityType::class, [
-//                'class' => 'QuidditchBundle\Entity\Equipe',
-//                'choice_label' => 'nom'
-//            ])
+            ->add('equipe', EntityType::class, [
+                'class' => 'QuidditchBundle\Entity\Equipe',
+                'choice_label' => 'nom'
+            ])
             ->add('image', FileType::class, [
                 'data_class' => null,
             ])
