@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-primary" type="submit">
+    {{ form_end(form) }}
+
+
+    <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>Nom des joueurs</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for players in players %}
+            <tr>
+                <th>Nom</th>
+                <td style="color:red;">{{ players.nom }}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{ players.experience }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ players.age }}</td>
+            </tr>
+            <tr>
+                <th>Fatigue</th>
+                <td>{{ players.fatigue }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ players.role }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img style="width: 150px; height: 150px;" src="{{ asset('upload/'~players.image) }}"  alt="" /></td>
+            </tr>
+
+        {% else %}
+            <tr><td>pas de joueurs  correspondant à la recherche</td></tr>
+        {% endfor %}
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+
+
+
+{% endblock %}

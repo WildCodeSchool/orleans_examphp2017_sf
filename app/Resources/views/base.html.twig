@@ -10,6 +10,27 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Quidditch</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="http://localhost/orleans_examphp2017_sf/web/app_dev.php/">Accueil</a></li>
+                <li><a href="http://localhost/orleans_examphp2017_sf/web/app_dev.php/recherche">Recherche</a></li>
+                <li><a href="http://localhost/orleans_examphp2017_sf/web/app_dev.php/contactez-moi">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div style="color:green;">{% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

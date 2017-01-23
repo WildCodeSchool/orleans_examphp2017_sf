@@ -1,0 +1,19 @@
+
+{% block body %}
+    <div style="color:green;">{% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+
+<form action="{{ path('contact_new') }}" method="POST" name="formmail">
+    {{ render(controller('QuidditchBundle:Contact:new')) }}
+
+
+
+
+{% endblock %}
