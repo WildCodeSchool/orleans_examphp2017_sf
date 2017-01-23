@@ -1,0 +1,16 @@
+body{
+    background-image: url('images/hp.jpeg');
+}
+
+.centre_table{
+    margin: 0 auto;
+}
+
+.petiteimg{
+    width: 100px;
+    height: 100px;
+}
+
+.match{
+    color: white;
+}

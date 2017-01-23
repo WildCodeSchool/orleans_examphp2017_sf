@@ -43,11 +43,11 @@ class JoueurController extends Controller
     {
         $joueur = new Joueur();
         $em = $this->getDoctrine()->getManager();
-        $equipe = $em->getRepository('QuidditchBundle:Equipe')->findAll();
         $form = $this->createForm('QuidditchBundle\Form\JoueurType', $joueur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() ) {
+
             $joueur->setAge(rand(18,30));
             $joueur->setExperience(rand(20,80));
             $joueur->setFatigue(rand(0,20));

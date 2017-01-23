@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid match">
         <h1 class="text-center">Match de Quidditch en Cours</h1>
-        <div class="row">
-            <div class="col-lg-5">
+        <div class="text-center"><img src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fimg3.wikia.nocookie.net%2F__cb20150214214913%2Fharrypotter%2Ffr%2Fimages%2F3%2F30%2FVif_d%2527Or_PNG.png&f=1"
+                  alt="quidditch" class="img-circle petiteimg text-center block"></div>
+
+        <div class="row center-block">
+            <div class="col-lg-12 center-block text-center">
                 <h2>{{ equipes.0.nom }}</h2>
-                <table class="table-responsive table-bordered">
+                <table class="table-bordered centre_table" style="margin: 0 auto;">
                     <thead>
                     <tr>
                         <th>Nom du joueur</th>
@@ -19,6 +22,7 @@
                     <tbody>
                     {% set experience = 0 %}
                     {% set fatigue = 0 %}
+                    {% set age = 0 %}
                     {% for joueur in equipes.0.joueurs %}
                         <tr>
                             <td>{{ joueur.nom }}</td>
@@ -28,22 +32,26 @@
                             <td>{{ joueur.fatigue }}</td>
                             {% set experience = experience + joueur.experience %}
                             {% set fatigue = fatigue + joueur.fatigue %}
+                            {% set age = age + joueur.age %}
                         </tr>
                     {% endfor %}
                     {% set moyenne_exp = (experience/7) %}
                     {% set moyenne_fat = (fatigue/7) %}
+                    {% set moyenne_age = (age/7) %}
                     {% set score = moyenne_exp * (moyenne_fat/100) %}
                     </tbody>
                 </table>
                 <div>
-                    <p>Note de L'Equipe{{ score }}</p>
+                    <p>Note de L'Equipe : {{ score }}</p>
                 </div>
             </div>
+        </div>
 
 
-            <div class="col-lg-5">
+        <div class="row center-block">
+            <div class="col-lg-12 text-center">
                 <h2>{{ equipes.1.nom }}</h2>
-                <table class="table-responsive table-bordered">
+                <table class="table-bordered centre_table" style="margin: 0 auto;">
                     <thead>
                     <tr>
                         <th>Nom du joueur</th>
@@ -54,8 +62,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% set experience = 0 %}
-                    {% set fatigue = 0 %}
+                    {% set experience2 = 0 %}
+                    {% set fatigue2 = 0 %}
+                    {% set age2 = 0 %}
                     {% for joueur in equipes.1.joueurs %}
                         <tr>
                             <td>{{ joueur.nom }}</td>
@@ -63,20 +72,38 @@
                             <td>{{ joueur.experience }}</td>
                             <td>{{ joueur.age }}</td>
                             <td>{{ joueur.fatigue }}</td>
-                            {% set experience = experience + joueur.experience %}
-                            {% set fatigue = fatigue + joueur.fatigue %}
+                            {% set experience2 = experience2 + joueur.experience %}
+                            {% set fatigue2 = fatigue2 + joueur.fatigue %}
+                            {% set age2 = age2 + joueur.age %}
                         </tr>
                     {% endfor %}
-                    {% set moyenne_exp = (experience/7) %}
-                    {% set moyenne_fat = (fatigue/7) %}
-                    {% set score = moyenne_exp * (moyenne_fat/100) %}
+                    {% set moyenne_exp2 = (experience2/7) %}
+                    {% set moyenne_fat2 = (fatigue2/7) %}
+                    {% set moyenne_age2 = (age2/7) %}
+                    {% set score2 = moyenne_exp2 * (moyenne_fat2/100) %}
                     </tbody>
                 </table>
                 <div>
-                    <p>Note de l'Equipe{{ score }}</p>
+                    <p>Note de L'Equipe : {{ score2 }}</p>
                 </div>
             </div>
 
+        </div>
+        <div class="text-center">un bonus de 10% est accordé à
+            {% if age > age2 %}
+                {% set score2 = score2 + (score2 *0.1) %}
+                {{ equipes.1.nom }}  du fait de son age plus faible
+            {% else %}
+                {% set score1 = score1 + score1*0.1 %}
+                {{ equipes.0.nom }}  du fait de son age plus faible
+            {% endif %}
+        </div>
+        <div class="row text-center">
+            {% if score > score2 %}
+                <h2>L'equipe {{ equipes.0.nom }} a gagnée !! Bravo</h2>
+            {% elseif %}
+                <h2>L'equipe {{ equipes.1.nom }} a gagnée !! Bravo</h2>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
