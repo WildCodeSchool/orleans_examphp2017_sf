@@ -130,45 +130,5 @@ class Team
     {
         return $this->joueurs;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add player
-     *
-     * @param \QuidditchBundle\Entity\Players $player
-     *
-     * @return Team
-     */
-    public function addPlayer(\QuidditchBundle\Entity\Players $player)
-    {
-        $this->players[] = $player;
-
-        return $this;
-    }
-
-    /**
-     * Remove player
-     *
-     * @param \QuidditchBundle\Entity\Players $player
-     */
-    public function removePlayer(\QuidditchBundle\Entity\Players $player)
-    {
-        $this->players->removeElement($player);
-    }
-
-    /**
-     * Get players
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlayers()
-    {
-        return $this->players;
-    }
 }
+

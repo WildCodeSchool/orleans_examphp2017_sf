@@ -39,6 +39,10 @@ class PlayersController extends Controller
      */
     public function newAction(Request $request)
     {
+        $experience = rand(20, 80);
+        $fatigue    = rand(0, 20);
+        $age        = rand(18, 20);
+
         $player = new Players();
         $form = $this->createForm('QuidditchBundle\Form\PlayersType', $player);
         $form->handleRequest($request);
