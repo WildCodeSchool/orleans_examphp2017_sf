@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Selection du match</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="debut de la partie" />
+    {{ form_end(form) }}
+
+    {%  if erreur == 1 %}
+        <p>Attention, vous devez choisir deux équipes différentes ! Veuillez resaisir le match</p>
+    {% elseif submit == 1 %}
+        <div>
+            <h2>Statistique du match</h2>
+            <h3>Equipe 1</h3>
+            <table class="table sortable ">
+                <thead>
+                <tr>
+                    <th>expérience total</th>
+                    <th>moyenne d’âge</th>
+                    <th>fatigue moyenne</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>{{ experiance1 }}</th>
+                    <th>{{ moyage1 }}</th>
+                    <th>{{ moyfatigue1 }}</th>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>Equipe 2</h3>
+            <table class="table sortable ">
+                <thead>
+                <tr>
+                    <th>expérience total</th>
+                    <th>moyenne d’âge</th>
+                    <th>fatigue moyenne</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>{{ experiance2 }}</th>
+                    <th>{{ moyage2 }}</th>
+                    <th>{{ moyfatigue2 }}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {%  if equipegagnante == 'match null'  %}
+            <h2>Les deux équipes ont fait match null</h2>
+        {%  else %}
+            <h2>L'équipe gagnante est l'équipe {{ equipegagnante }} </h2>
+        {% endif %}
+
+    {% endif %}
+
+
+{% endblock %}
