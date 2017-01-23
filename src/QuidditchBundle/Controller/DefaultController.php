@@ -13,8 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $player = new Player();
-        var_dump($player);
+
         return $this->render('QuidditchBundle:Default:index.html.twig');
     }
 }

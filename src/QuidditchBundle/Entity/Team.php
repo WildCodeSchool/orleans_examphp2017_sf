@@ -116,6 +116,8 @@ class Team
      */
     public function addPlayer(\QuidditchBundle\Entity\Player $player)
     {
+
+        $player->setTeam($this);
         $this->players[] = $player;
 
         return $this;

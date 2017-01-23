@@ -3,6 +3,7 @@
 namespace QuidditchBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,8 @@ class PlayerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('role')
+            ->add('role', ChoiceType::class, array('choices' => array('gardien'=>'gardien', 'attrapeur'=>'attrapeur', 'batteur'=>'batteur', 'poursuiveur'=>'poursuiveur'),
+            'choices_as_values'=>true))
         ;
     }
     
