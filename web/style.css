@@ -1,6 +1,7 @@
 body{
     background-image: url('images/hp.jpeg');
     background-size: cover;
+    color: white;
 }
 
 .centre_table{
