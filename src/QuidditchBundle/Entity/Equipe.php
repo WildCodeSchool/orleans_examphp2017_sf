@@ -4,6 +4,7 @@ namespace QuidditchBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Equipe
  *
@@ -41,7 +42,6 @@ class Equipe
      * @ORM\OneToMany(targetEntity="Joueur", mappedBy="equipe")
      */
     private $joueurs;
-
 
     /**
      * Get id

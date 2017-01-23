@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use QuidditchBundle\Entity\Equipe;
 use QuidditchBundle\Form\EquipeType;
+use QuidditchBundle\Entity\Joueur;
 
 /**
  * Equipe controller.

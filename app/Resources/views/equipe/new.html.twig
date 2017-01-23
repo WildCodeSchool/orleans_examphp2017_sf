@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block body %}
-    <h1>Equipe creation</h1>
+    <h1 class="text-center">Création d'une équipe</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Créer" class="btn btn-default"/>
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('equipe_index') }}">Back to the list</a>
+            <a href="{{ path('equipe_index') }}">Retour à la liste des équipes</a>
         </li>
     </ul>
 {% endblock %}

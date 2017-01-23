@@ -38,7 +38,7 @@ class Joueur
     /**
      * @var int
      *
-     * @ORM\Column(name="age", type="integer")
+     * @ORM\Column(name="age", type="integer", nullable=true)
      */
     private $age;
 
@@ -62,6 +62,20 @@ class Joueur
      * @ORM\ManyToOne(targetEntity="Equipe", inversedBy="joueurs")
      */
     private $equipe;
+
+    /**
+     * @var string
+     * @ORM\Column(name="image", type="text")
+     */
+    private $image;
+
+//    /**
+//     * Constructor
+//     */
+//    public function __construct()
+//    {
+//        $this->experience = new rand(20,80);
+//    }
 
 
     /**
@@ -216,5 +230,21 @@ class Joueur
     public function getEquipe()
     {
         return $this->equipe;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

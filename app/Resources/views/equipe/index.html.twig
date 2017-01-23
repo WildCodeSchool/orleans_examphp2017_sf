@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Equipe list</h1>
+    <h1>Liste des équipes</h1>
 
     <table>
         <thead>
@@ -21,10 +21,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('equipe_show', { 'id': equipe.id }) }}">show</a>
+                            <a href="{{ path('equipe_show', { 'id': equipe.id }) }}">montrer</a>
                         </li>
                         <li>
-                            <a href="{{ path('equipe_edit', { 'id': equipe.id }) }}">edit</a>
+                            <a href="{{ path('equipe_edit', { 'id': equipe.id }) }}">éditer</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('equipe_new') }}">Create a new entry</a>
+            <a href="{{ path('equipe_new') }}">Créer une nouvelle équipe</a>
         </li>
     </ul>
 {% endblock %}

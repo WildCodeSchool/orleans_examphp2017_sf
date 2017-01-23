@@ -41,13 +41,24 @@ class JoueurController extends Controller
      */
     public function newAction(Request $request)
     {
+        $experience = mt_rand(20, 80);
+        $age = mt_rand(18, 30);
+        $fatigue = mt_rand(0, 20);
         $joueur = new Joueur();
         $form = $this->createForm('QuidditchBundle\Form\JoueurType', $joueur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image=$joueur->getImage();
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('upload_directory'),
+                $imageName
+            );
+            $joueur->setImage($imageName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($joueur);
+            $joueur->setExperience($experience)->setAge($age)->setFatigue($fatigue);
             $em->flush();
 
             return $this->redirectToRoute('joueur_show', array('id' => $joueur->getId()));

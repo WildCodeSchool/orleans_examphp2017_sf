@@ -2,9 +2,14 @@
 
 namespace QuidditchBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use QuidditchBundle\Entity\Joueur;
+use QuidditchBundle\Entity\Equipe;
 
 class EquipeType extends AbstractType
 {
@@ -17,6 +22,12 @@ class EquipeType extends AbstractType
         $builder
             ->add('nom')
             ->add('pays')
+            ->add('joueurs', EntityType::class, [
+                'class' => 'QuidditchBundle\Entity\Joueur',
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
+            ])
         ;
     }
     

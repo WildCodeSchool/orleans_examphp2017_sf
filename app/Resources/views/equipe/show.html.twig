@@ -17,19 +17,24 @@
                 <th>Pays</th>
                 <td>{{ equipe.pays }}</td>
             </tr>
+            {#<tr>#}
+                {#<th>Joueurs</th>#}
+                {#<td>{{ equipe.joueurs.id }}</td>#}
+            {#</tr>#}
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('equipe_index') }}">Back to the list</a>
+            <a href="{{ path('equipe_index') }}">Retour à la liste des équipes</a>
         </li>
         <li>
-            <a href="{{ path('equipe_edit', { 'id': equipe.id }) }}">Edit</a>
+            <a href="{{ path('equipe_edit', { 'id': equipe.id }) }}">Editer</a>
         </li>
+
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

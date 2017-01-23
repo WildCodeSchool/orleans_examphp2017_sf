@@ -1,1 +1,31 @@
-Hello World!
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block header %}
+    <h1 class="text-center">Match de Quidditch</h1>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn primary" type="submit">
+    {{ form_end(form) }}
+
+    <table class="table table-hover table-condensed">
+        <thead>
+        <th>Nom</th>
+        <th>Pays</th>
+        <th>Noms des joueurs</th>
+        </thead>
+    </table>
+
+    <tbody>
+        {% for equipe in equipes %}
+            <tr>
+                <td>{{ equipe.nom }}</td>
+                <td>{{ equipe.pays }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+{% endblock %}
